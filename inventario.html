@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Inventario</title>
+</head>
+<body>
+    <h1>Gestión de Inventario</h1>
+    <p>Abre la consola del navegador para ver el resultado de las operaciones del inventario con Ctrl + Shitf + J.</p>
+
+    <script>
+        // Arreglo para almacenar productos
+        let inventario = [];
+
+        // Función para agregar productos al inventario
+        function agregarProducto(nombre, cantidad) {
+            // Verifica si la cantidad es válida
+            if (cantidad <= 0) {
+                console.log("La cantidad debe ser mayor a 0.");
+                return;
+            }
+
+            // Busca si el producto ya existe
+            let productoExistente = inventario.find(producto => producto.nombre === nombre);
+
+            if (productoExistente) {
+                // Si el producto ya existe, actualiza la cantidad
+                productoExistente.cantidad += cantidad;
+                console.log(`La cantidad de '${nombre}' ha sido actualizada a ${productoExistente.cantidad}.`);
+            } else {
+                // Si no existe, agrega un nuevo producto
+                inventario.push({ nombre: nombre, cantidad: cantidad });
+                console.log(`Producto '${nombre}' agregado con cantidad: ${cantidad}.`);
+            }
+        }
+
+        // Función para mostrar todos los productos
+        function mostrarInventario() {
+            if (inventario.length === 0) {
+                console.log("El inventario está vacío.");
+            } else {
+                console.log("Inventario actual:");
+                inventario.forEach(producto => {
+                    console.log(`${producto.nombre}: ${producto.cantidad}`);
+                });
+            }
+        }
+
+        // Función para actualizar la cantidad de un producto
+        function actualizarProducto(nombre, nuevaCantidad) {
+            if (nuevaCantidad < 0) {
+                console.log("La cantidad no puede ser negativa.");
+                return;
+            }
+
+            let productoExistente = inventario.find(producto => producto.nombre === nombre);
+
+            if (productoExistente) {
+                productoExistente.cantidad = nuevaCantidad;
+                console.log(`La cantidad de '${nombre}' ha sido actualizada a ${nuevaCantidad}.`);
+            } else {
+                console.log(`El producto '${nombre}' no existe en el inventario.`);
+            }
+        }
+
+        // Función para eliminar productos sin stock
+        function eliminarProductosSinStock() {
+            inventario = inventario.filter(producto => producto.cantidad > 0);
+            console.log("Productos sin stock eliminados.");
+        }
+
+        // Ejemplo de uso: estos son llamados automáticos que puedes modificar o probar
+        agregarProducto("Manzanas", 10);
+        agregarProducto("Bananas", 5);
+        agregarProducto("Manzanas", 5);  // Actualiza la cantidad de manzanas
+        mostrarInventario();
+        actualizarProducto("Bananas", 0);  // Actualiza la cantidad de Bananas a 0
+        eliminarProductosSinStock();  // Elimina productos sin stock
+        mostrarInventario();
+    </script>
+</body>
+</html>
