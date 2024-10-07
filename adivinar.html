@@ -4,30 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adivina el Número</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-        }
-        input, button {
-            padding: 10px;
-            margin: 10px;
-            font-size: 16px;
-        }
-        #mensaje {
-            margin-top: 20px;
-            font-size: 18px;
-            color: blue;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Juego: Adivina el Número</h1>
+    <h1>Héctor Fabio Caiceo en los Controles</h1>
+    <p>Juego de adivinar números</p>
     <p>Ingresa un número entre 1 y 100:</p>
     
     <input type="number" id="inputNumero" min="1" max="100" />
     <button onclick="adivinarNumero()">Adivinar</button>
+
+    <div id="contador">Intentos: 0</div>
     
     <p id="mensaje"></p>
     
@@ -40,17 +27,22 @@
         function adivinarNumero() {
             let numeroUsuario = document.getElementById("inputNumero").value;
             let mensaje = document.getElementById("mensaje");
+            let contador = document.getElementById("contador");
             intentos++;
 
+            // Actualiza el contador de intentos
+            contador.textContent = `Intentos: ${intentos}`;
+
+            // Comprobaciones del número
             if (numeroUsuario == numeroSecreto) {
-                mensaje.textContent = `¡Felicidades! Adivinaste el número en ${intentos} intentos.`;
-                mensaje.style.color = "green";
+                mensaje.textContent = `¡Lo lograste, Héctor! Adivinaste el número en ${intentos} intentos.`;
+                mensaje.className = "correcto";
             } else if (numeroUsuario > numeroSecreto) {
-                mensaje.textContent = "El número es menor. ¡Intenta de nuevo!";
-                mensaje.style.color = "red";
+                mensaje.textContent = "El número es menor. ¡Sigue intentando, Héctor!";
+                mensaje.className = "incorrecto";
             } else if (numeroUsuario < numeroSecreto) {
-                mensaje.textContent = "El número es mayor. ¡Intenta de nuevo!";
-                mensaje.style.color = "red";
+                mensaje.textContent = "El número es mayor. ¡Sigue intentando, Héctor!";
+                mensaje.className = "incorrecto";
             }
         }
     </script>
