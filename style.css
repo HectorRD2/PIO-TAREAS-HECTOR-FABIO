@@ -1,0 +1,112 @@
+/* Estilos generales */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: radial-gradient(circle, #00f260, #0575e6);
+    color: #ffffff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    animation: fondoAnimacion 5s infinite alternate;
+}
+
+@keyframes fondoAnimacion {
+    0% { background: radial-gradient(circle, #00f260, #0575e6); }
+    100% { background: radial-gradient(circle, #f76b1c, #ffafbd); }
+}
+
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: #ffce00;
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    animation: tituloAnimacion 3s infinite alternate;
+}
+
+@keyframes tituloAnimacion {
+    0% { color: #ffce00; }
+    100% { color: #ffffff; }
+}
+
+p {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+input {
+    padding: 15px;
+    border-radius: 15px;
+    border: 3px solid #ffce00;
+    font-size: 1.2rem;
+    outline: none;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 220px;
+    color: #333;
+    background-color: #f0f0f0;
+    box-shadow: 0 0 15px rgba(255, 206, 0, 0.5);
+}
+
+button {
+    background-color: #ff1744;
+    color: white;
+    padding: 15px;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 0 20px rgba(255, 23, 68, 0.7);
+}
+
+button:hover {
+    background-color: #ff616f;
+    transform: scale(1.15);
+    box-shadow: 0 0 30px rgba(255, 23, 68, 0.9);
+}
+
+#mensaje {
+    font-size: 1.8rem;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #ffff57;
+    transition: all 0.3s ease;
+}
+
+#contador {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    background-color: #ffce00;
+    color: #333;
+    padding: 12px;
+    border-radius: 12px;
+    width: 200px;
+    display: inline-block;
+    box-shadow: 0 0 15px rgba(255, 206, 0, 0.8);
+}
+
+.correcto {
+    color: #00e676;
+    animation: ganar 1s ease-in-out infinite;
+}
+
+.incorrecto {
+    color: #ff1744;
+    animation: perder 0.5s ease-in-out infinite;
+}
+
+@keyframes ganar {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+@keyframes perder {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+}
