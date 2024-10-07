@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivina el Número</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        #mensaje {
+            margin-top: 20px;
+            font-size: 18px;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Juego: Adivina el Número</h1>
+    <p>Ingresa un número entre 1 y 100:</p>
+    
+    <input type="number" id="inputNumero" min="1" max="100" />
+    <button onclick="adivinarNumero()">Adivinar</button>
+    
+    <p id="mensaje"></p>
+    
+    <script>
+        // Genera un número aleatorio entre 1 y 100
+        let numeroSecreto = Math.floor(Math.random() * 100) + 1;
+        let intentos = 0;
+
+        // Función para adivinar el número
+        function adivinarNumero() {
+            let numeroUsuario = document.getElementById("inputNumero").value;
+            let mensaje = document.getElementById("mensaje");
+            intentos++;
+
+            if (numeroUsuario == numeroSecreto) {
+                mensaje.textContent = `¡Felicidades! Adivinaste el número en ${intentos} intentos.`;
+                mensaje.style.color = "green";
+            } else if (numeroUsuario > numeroSecreto) {
+                mensaje.textContent = "El número es menor. ¡Intenta de nuevo!";
+                mensaje.style.color = "red";
+            } else if (numeroUsuario < numeroSecreto) {
+                mensaje.textContent = "El número es mayor. ¡Intenta de nuevo!";
+                mensaje.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
